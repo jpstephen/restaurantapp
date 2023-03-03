@@ -31,6 +31,8 @@
                     <br />
                 </div>
 
+                
+
                 itemcount++;
             }
             if(itemcount == 2)
@@ -45,10 +47,12 @@
 
 <script>
 var itemsinbill = [];
+var iteminbillid = 0;
 
     function addToBill(name, price) {
-        var itemadded = { "name": "", "price": 0, "quantity": 0, "total": 0 };
+        var itemadded = { "id": 0, "name": "", "price": 0, "quantity": 0, "total": 0 };
 
+        itemadded.id = iteminbillid + 1;
         itemadded.name = name;
         itemadded.price = price;
         itemadded.quantity = document.getElementById(name + "_value").value;
@@ -58,16 +62,18 @@ var itemsinbill = [];
 
         createtable();
 
-        //document.getElementById("billsection").innerHTML = "<h3>added</h3>";
     }
 
 function createtable() {
 
-    var tablehtml = "<table class='table-condensed' width='100%'><tr><th colspan=4>BILL</th></tr>";
-    tablehtml += "<tr><th>Item</th><th>Price</th><th>Quantity</th><th>Total</th></tr>"
+    var tablehtml = "<table class='table-condensed' width='100%'><tr><th colspan=5 align='center'>BILL</th></tr>";
+    tablehtml += "<tr><th>Item</th><th>Price</th><th>Quantity</th><th>Total</th><th></th></tr>"
 
     itemsinbill.forEach(function(item) {
-        tablehtml += "<tr><td>" + item.name + "</td>" + "<td>" + item.price + "</td>" + "<td>" + item.quantity + "</td>" +"<td>" + item.total + "</td></tr>";
+        tablehtml += "<tr><td>" + item.name + 
+        "</td>" + "<td>" + item.price + "</td>" + 
+        "<td>" + item.quantity + "</td>" +"<td>" + item.total + 
+        "</td><td><a class='btn btn-sm btn-outline-danger' style='height:20px' onclick='deletefrombill("+item.id+")'><i class='bi bi-trash' ></i></a></td></tr>";
 });
     tablehtml += "</table>";
 
