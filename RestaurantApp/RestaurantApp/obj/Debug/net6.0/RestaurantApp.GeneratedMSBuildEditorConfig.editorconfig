@@ -11,7 +11,7 @@ build_property.RootNamespace = RestaurantApp
 build_property.ProjectDir = C:\RestaurantApp\RestaurantApp\RestaurantApp\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\RestaurantApp\RestaurantApp\RestaurantApp
 build_property._RazorSourceGeneratorDebug = 
 
@@ -21,6 +21,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/RestaurantApp/RestaurantApp/RestaurantApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/RestaurantApp/RestaurantApp/RestaurantApp/Views/Items/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/RestaurantApp/RestaurantApp/RestaurantApp/Views/Items/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/RestaurantApp/RestaurantApp/RestaurantApp/Views/Items/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/RestaurantApp/RestaurantApp/RestaurantApp/Views/Items/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/RestaurantApp/RestaurantApp/RestaurantApp/Views/Items/_createItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbXNcX2NyZWF0ZUl0ZW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/RestaurantApp/RestaurantApp/RestaurantApp/Views/Shared/Error.cshtml]

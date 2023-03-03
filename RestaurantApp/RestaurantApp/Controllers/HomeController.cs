@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RestaurantApp.Data;
 using RestaurantApp.Models;
 using System.Diagnostics;
 
@@ -8,14 +9,16 @@ namespace RestaurantApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApplicationDbContext _context;
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Items> allItems = _context.MItems;
+            return View(allItems);
         }
 
         public IActionResult Privacy()
