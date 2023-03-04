@@ -52,31 +52,84 @@ var iteminbillid = 0;
     function addToBill(name, price) {
         var itemadded = { "id": 0, "name": "", "price": 0, "quantity": 0, "total": 0 };
 
-        itemadded.id = iteminbillid + 1;
+        iteminbillid++;
+
+        itemadded.id = iteminbillid;
         itemadded.name = name;
         itemadded.price = price;
         itemadded.quantity = document.getElementById(name + "_value").value;
         itemadded.total = price * document.getElementById(name + "_value").value;
 
-        itemsinbill.push(itemadded);
+        addInBillArray(itemadded);
 
         createtable();
 
     }
 
+
+function addInBillArray(itemadded){
+
+    var itemalreadyinbill = "no";
+
+    itemsinbill.forEach(function(item) {
+
+        if (item.name == itemadded.name) {
+
+            itemalreadyinbill = "yes";
+            item.quantity = parseInt(itemadded.quantity) + parseInt(item.quantity);
+            item.total = item.quantity * item.price;
+           
+        }
+
+    });
+
+    if (itemalreadyinbill == "no") {
+        itemsinbill.push(itemadded);
+    }
+}
+
+
 function createtable() {
+
+    var billtotal = 0;
 
     var tablehtml = "<table class='table-condensed' width='100%'><tr><th colspan=5 align='center'>BILL</th></tr>";
     tablehtml += "<tr><th>Item</th><th>Price</th><th>Quantity</th><th>Total</th><th></th></tr>"
 
     itemsinbill.forEach(function(item) {
+
+        billtotal += parseInt(item.total);
+
         tablehtml += "<tr><td>" + item.name + 
         "</td>" + "<td>" + item.price + "</td>" + 
         "<td>" + item.quantity + "</td>" +"<td>" + item.total + 
         "</td><td><a class='btn btn-sm btn-outline-danger' style='height:20px' onclick='deletefrombill("+item.id+")'><i class='bi bi-trash' ></i></a></td></tr>";
 });
+    tablehtml += "<tr><td style='height:30px;'></td><td></td><td></td><td></td><td></td></tr>"
+    tablehtml += "<tr><td></td><td></td><td></td><td colspan='2'>Total = "+billtotal+" aed</td></tr>"
+    tablehtml += "<tr><td style='height:30px;'></td><td></td><td></td><td></td><td></td></tr>"
+    tablehtml += "<tr><td style='height:30px;'></td><td></td><td><a class='btn btn-lg btn-secondary' onclick=''>BILL</a></td><td></td><td></td></tr>"
     tablehtml += "</table>";
 
     document.getElementById("billsection").innerHTML = tablehtml;
+}
+
+
+
+function deletefrombill(id) {
+    itemsinbill.forEach(function(item) {
+    
+        console.log("itemid", item.id);
+        console.log("id", id);
+        if (item.id == id) {
+            const index = itemsinbill.indexOf(item);
+            if (index > -1) { 
+              itemsinbill.splice(index, 1); 
+            }
+        }
+
+    });
+
+    createtable();
 }
 </script>
