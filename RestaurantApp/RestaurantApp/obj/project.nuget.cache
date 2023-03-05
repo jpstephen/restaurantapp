@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UDXCxESL1X3p2zPjsLZJPOnNz6IQaQieJNnGmZiFhh//GayboJ+M3Vaf7mwaf4uWev0BBdSg7gjBptDCaftuzg==",
+  "dgSpecHash": "C/GH7mtnTUP5ZGJqe3kq/hb4nArf4kD04bIVrvwNhUl9wCFfW0ow6OBL7mVOO5XhOvU50Ei2hfPUvKL1hDa6+Q==",
   "success": true,
   "projectFilePath": "C:\\RestaurantApp\\RestaurantApp\\RestaurantApp\\RestaurantApp.csproj",
   "expectedPackageFiles": [
@@ -49,6 +49,12 @@
     "C:\\Users\\jpste\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\jpste\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\jpste\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\jpste\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\jpste\\.nuget\\packages\\pdfsharpcore\\1.1.21\\pdfsharpcore.1.1.21.nupkg.sha512",
+    "C:\\Users\\jpste\\.nuget\\packages\\polybioz.htmlrenderer.pdfsharp.core\\1.0.0\\polybioz.htmlrenderer.pdfsharp.core.1.0.0.nupkg.sha512",
+    "C:\\Users\\jpste\\.nuget\\packages\\sixlabors.core\\1.0.0-beta0008\\sixlabors.core.1.0.0-beta0008.nupkg.sha512",
+    "C:\\Users\\jpste\\.nuget\\packages\\sixlabors.fonts\\1.0.0-beta0009\\sixlabors.fonts.1.0.0-beta0009.nupkg.sha512",
+    "C:\\Users\\jpste\\.nuget\\packages\\sixlabors.imagesharp\\1.0.0-beta0006\\sixlabors.imagesharp.1.0.0-beta0006.nupkg.sha512",
     "C:\\Users\\jpste\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\jpste\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\jpste\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",

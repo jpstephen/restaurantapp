@@ -21,11 +21,11 @@
                     <div class="row">
                 }*@
 
-                var no_of_items = @item.Name + "_value";
+                var no_of_items = @item.Name.Replace(' ','_') + "_value";
 
                 <div class="col-xl-3">@item.Name &nbsp;&nbsp;&nbsp;&nbsp; @item.Price aed<br /><br />
                     <input type="number" id=@no_of_items value="1" style="width:40px;height:40px;" /> 
-                    <a class="btn btn-lg btn-primary" onclick="addToBill('@item.Name',@item.Price)">
+                    <a class="btn btn-lg btn-primary" onclick="addToBill('@item.Name.Replace(' ','_')',@item.Price)">
                         <i class="bi bi-file-plus-fill"></i>Add</a>
                     <br />
                     <br />
@@ -55,12 +55,14 @@ var iteminbillid = 0;
         iteminbillid++;
 
         itemadded.id = iteminbillid;
-        itemadded.name = name;
+        itemadded.name = name.replace("_"," ");
         itemadded.price = price;
         itemadded.quantity = document.getElementById(name + "_value").value;
         itemadded.total = price * document.getElementById(name + "_value").value;
 
         addInBillArray(itemadded);
+
+        console.log("added", itemadded);
 
         createtable();
 
@@ -91,7 +93,7 @@ function addInBillArray(itemadded){
 
 function createtable() {
 
-    var billtotal = 0;
+    float billtotal = 0;
 
     var tablehtml = "<table class='table-condensed' width='100%'><tr><th colspan=5 align='center'>BILL</th></tr>";
     tablehtml += "<tr><th>Item</th><th>Price</th><th>Quantity</th><th>Total</th><th></th></tr>"
@@ -106,15 +108,15 @@ function createtable() {
         "</td><td><a class='btn btn-sm btn-outline-danger' style='height:20px' onclick='deletefrombill("+item.id+")'><i class='bi bi-trash' ></i></a></td></tr>";
 });
     tablehtml += "<tr><td style='height:30px;'></td><td></td><td></td><td></td><td></td></tr>"
-    tablehtml += "<tr><td></td><td></td><td></td><td colspan='2'>Total = "+billtotal+" aed</td></tr>"
+    tablehtml += "<tr><td></td><td></td><td></td><td colspan='2'>Total = "+billtotal.toString("0.00")+" aed</td></tr>"
     tablehtml += "<tr><td style='height:30px;'></td><td></td><td></td><td></td><td></td></tr>"
-    tablehtml += "<tr><td style='height:30px;'></td><td></td><td><a class='btn btn-lg btn-secondary' onclick=''>BILL</a></td><td></td><td></td></tr>"
+    tablehtml += "<tr><td style='height:30px;'></td><td></td><td><a class='btn btn-lg btn-secondary' onclick='generatebill()'>BILL</a></td><td></td><td></td></tr>"
     tablehtml += "</table>";
+    //tablehtml += "<br />";
+    //tablehtml += "<form method='post' asp-controller='Home' asp-action='GeneratePDF'><input type='submit' value='BILL' /></form>"
 
     document.getElementById("billsection").innerHTML = tablehtml;
 }
-
-
 
 function deletefrombill(id) {
     itemsinbill.forEach(function(item) {
@@ -131,5 +133,14 @@ function deletefrombill(id) {
     });
 
     createtable();
+}
+
+function generatebill() {
+
+
+    var allbills = itemsinbill.toString();
+
+    window.open('@Url.Action("GeneratePDF", "Home")' + '?allbills=' + JSON.stringify(itemsinbill), '_blank');
+
 }
 </script>

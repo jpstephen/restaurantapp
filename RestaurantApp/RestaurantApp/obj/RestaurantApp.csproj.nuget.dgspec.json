@@ -61,6 +61,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "Polybioz.HtmlRenderer.PdfSharp.Core": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [

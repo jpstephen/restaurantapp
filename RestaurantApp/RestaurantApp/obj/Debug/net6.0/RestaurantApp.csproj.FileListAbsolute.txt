@@ -390,3 +390,10 @@ C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Debug\net6.0\refint\RestaurantA
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Debug\net6.0\RestaurantApp.pdb
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Debug\net6.0\RestaurantApp.genruntimeconfig.cache
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Debug\net6.0\ref\RestaurantApp.dll
+C:\RestaurantApp\RestaurantApp\RestaurantApp\bin\Debug\net6.0\PdfSharpCore.dll
+C:\RestaurantApp\RestaurantApp\RestaurantApp\bin\Debug\net6.0\HtmlRenderer.Core.dll
+C:\RestaurantApp\RestaurantApp\RestaurantApp\bin\Debug\net6.0\HtmlRenderer.PdfSharp.Core.dll
+C:\RestaurantApp\RestaurantApp\RestaurantApp\bin\Debug\net6.0\SixLabors.Core.dll
+C:\RestaurantApp\RestaurantApp\RestaurantApp\bin\Debug\net6.0\SixLabors.Fonts.dll
+C:\RestaurantApp\RestaurantApp\RestaurantApp\bin\Debug\net6.0\SixLabors.ImageSharp.dll
+C:\RestaurantApp\RestaurantApp\RestaurantApp\bin\Debug\net6.0\Newtonsoft.Json.dll
