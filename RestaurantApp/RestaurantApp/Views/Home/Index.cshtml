@@ -8,6 +8,7 @@
     var itemcount = 0;
 }
 
+
 <div class="row">
     <div class="col-md-8">
         <div class="row">
@@ -23,7 +24,7 @@
 
                 var no_of_items = @item.Name.Replace(' ','_') + "_value";
 
-                <div class="col-xl-3">@item.Name &nbsp;&nbsp;&nbsp;&nbsp; @item.Price aed<br /><br />
+                <div class="col-md-3">@item.Name &nbsp;&nbsp;&nbsp;&nbsp; @item.Price aed<br /><br />
                     <input type="number" id=@no_of_items value="1" style="width:40px;height:40px;" /> 
                     <a class="btn btn-lg btn-primary" onclick="addToBill('@item.Name.Replace(' ','_')',@item.Price)">
                         <i class="bi bi-file-plus-fill"></i>Add</a>
@@ -45,8 +46,9 @@
     <div class="col-md-4" id="billsection"></div>
 </div>
 
+
 <script>
-var itemsinbill = [];
+var itemsinbill = {"addSignatureInBill":"", "addDeliveryInBill":"","addMobileNo":"", "itemsadded":[]};
 var iteminbillid = 0;
 
     function addToBill(name, price) {
@@ -73,7 +75,7 @@ function addInBillArray(itemadded){
 
     var itemalreadyinbill = "no";
 
-    itemsinbill.forEach(function(item) {
+    itemsinbill.itemsadded.forEach(function(item) {
 
         if (item.name == itemadded.name) {
 
@@ -86,31 +88,34 @@ function addInBillArray(itemadded){
     });
 
     if (itemalreadyinbill == "no") {
-        itemsinbill.push(itemadded);
+        itemsinbill.itemsadded.push(itemadded);
     }
 }
 
 
 function createtable() {
 
-    float billtotal = 0;
+    var billtotal = 0;
 
     var tablehtml = "<table class='table-condensed' width='100%'><tr><th colspan=5 align='center'>BILL</th></tr>";
     tablehtml += "<tr><th>Item</th><th>Price</th><th>Quantity</th><th>Total</th><th></th></tr>"
 
-    itemsinbill.forEach(function(item) {
+    itemsinbill.itemsadded.forEach(function(item) {
 
-        billtotal += parseInt(item.total);
+        billtotal += parseFloat(item.total);
 
         tablehtml += "<tr><td>" + item.name + 
         "</td>" + "<td>" + item.price + "</td>" + 
         "<td>" + item.quantity + "</td>" +"<td>" + item.total + 
         "</td><td><a class='btn btn-sm btn-outline-danger' style='height:20px' onclick='deletefrombill("+item.id+")'><i class='bi bi-trash' ></i></a></td></tr>";
 });
-    tablehtml += "<tr><td style='height:30px;'></td><td></td><td></td><td></td><td></td></tr>"
-    tablehtml += "<tr><td></td><td></td><td></td><td colspan='2'>Total = "+billtotal.toString("0.00")+" aed</td></tr>"
-    tablehtml += "<tr><td style='height:30px;'></td><td></td><td></td><td></td><td></td></tr>"
-    tablehtml += "<tr><td style='height:30px;'></td><td></td><td><a class='btn btn-lg btn-secondary' onclick='generatebill()'>BILL</a></td><td></td><td></td></tr>"
+    tablehtml += "<tr><td style='height:30px;'></td><td></td><td></td><td></td><td></td></tr>";
+    tablehtml += "<tr><td></td><td></td><td></td><td colspan='2'>Total = " + billtotal + " aed</td></tr>";
+    tablehtml += "<tr><td style='height:30px;'></td><td></td><td></td><td></td><td></td></tr>";
+    tablehtml += "<tr><td style='height:30px;'></td><td></td><td><a class='btn btn-lg btn-secondary' onclick='generatebill()'>BILL</a></td><td></td><td></td></tr>";
+    tablehtml += "<tr><td colspan=1><input type='checkbox' onchange='additionaldetails(this)' id='phoneno' /> Phone No ? </td><td colspan=4><input type='text' class='form-control' id='phonenovalue' placeholder='Please enter phone number.' style='display:none' /></td></tr>";
+    tablehtml += "<tr><td colspan=1><input type='checkbox' onchange='additionaldetails(this)' id='delivery' /> Delivery ? </td><td colspan=4><input type='text' class='form-control' id='deliveryvalue' placeholder='Please delivery address.' style='display:none' /></td></tr>"
+    tablehtml += "<tr><td colspan=5><input type='checkbox' onchange='additionaldetails(this)' id='signature' /> Signature ? </td></tr>";
     tablehtml += "</table>";
     //tablehtml += "<br />";
     //tablehtml += "<form method='post' asp-controller='Home' asp-action='GeneratePDF'><input type='submit' value='BILL' /></form>"
@@ -118,15 +123,34 @@ function createtable() {
     document.getElementById("billsection").innerHTML = tablehtml;
 }
 
+function additionaldetails(e) {
+    if (e.id == "phoneno") {
+        if (e.checked) {
+            $("#phonenovalue").show();
+        }
+        else {
+            $("#phonenovalue").hide();
+        }
+    }
+    else if (e.id == "delivery") {
+        if (e.checked) {
+            $("#deliveryvalue").show();
+        }
+        else {
+            $("#deliveryvalue").hide();
+        }
+    }
+}
+
 function deletefrombill(id) {
-    itemsinbill.forEach(function(item) {
+    itemsinbill.itemsadded.forEach(function(item) {
     
         console.log("itemid", item.id);
         console.log("id", id);
         if (item.id == id) {
-            const index = itemsinbill.indexOf(item);
+            const index = itemsinbill.itemsadded.indexOf(item);
             if (index > -1) { 
-              itemsinbill.splice(index, 1); 
+              itemsinbill.itemsadded.splice(index, 1); 
             }
         }
 
@@ -137,10 +161,28 @@ function deletefrombill(id) {
 
 function generatebill() {
 
+    var signelement = document.getElementById("signature");
+    var phonenoelement = document.getElementById("phoneno");
+    var deliveryelement = document.getElementById("delivery");
 
-    var allbills = itemsinbill.toString();
+    if (signelement.checked) {
+        itemsinbill.addSignatureInBill = "yes";
+    }
+    if (phonenoelement.checked) {
+        itemsinbill.addMobileNo = (document.getElementById("phonenovalue").value).toString();
+    }
+    if (deliveryelement.checked) {
+        itemsinbill.addDeliveryInBill = document.getElementById("deliveryvalue").value;
+    }
+
+
+    itemsinbill.itemsadded = JSON.stringify(itemsinbill.itemsadded);
 
     window.open('@Url.Action("GeneratePDF", "Home")' + '?allbills=' + JSON.stringify(itemsinbill), '_blank');
 
+    document.getElementById("billsection").innerHTML = "";
+
+    itemsinbill = {"addSignatureInBill":"", "addDeliveryInBill":"","addMobileNo":"", "itemsadded":[]};
+    iteminbillid = 0;
 }
 </script>
