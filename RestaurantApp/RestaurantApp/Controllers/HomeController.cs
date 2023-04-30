@@ -21,8 +21,9 @@ namespace RestaurantApp.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+
             IEnumerable<Items> allItems = _context.MItems;
             return View(allItems);
         }
@@ -34,14 +35,15 @@ namespace RestaurantApp.Controllers
             float totalvat = 0;
             string htmlcontent = "";
             float finalamount = 0; 
-            //allBills? thebills = new allBills();
+
             List<Bill>? allItemsadded = new List<Bill>();
 
-            var thebills = JsonConvert.DeserializeObject<allBills>(allbills);
+            var thebills = JsonConvert.DeserializeObject<Bills>(allbills);
 
             if (thebills != null)
             {
-                if(thebills.itemsadded != null)
+                
+                if (thebills.itemsadded != null)
                 {
                     allItemsadded = JsonConvert.DeserializeObject<List<Bill>>(thebills.itemsadded);
                 }
@@ -53,15 +55,15 @@ namespace RestaurantApp.Controllers
 
             
             htmlcontent += "<table class='table-condensed'>";
-            htmlcontent += "<tr><td colspan=5 align='right'>" + DateTime.Now.ToString("dddd, dd MMMM yyyy hh:mm tt") + "</td></tr>";
+            htmlcontent += "<tr><td colspan=5 style='padding-right:25px;' align='right'>" + DateTime.Now.ToString("dddd, dd MMMM yyyy hh:mm tt") + "</td></tr>";
             htmlcontent += "<tr><td colspan=5 align='center'><p style='font-size:20px;'><strong>LE LAZARO CAFE</strong></p></td></tr>";
-            htmlcontent += "<tr><td colspan=5 align='center'>+971 50 780 1413" +
-                            "<br/>02 633 7336" +
-                            "<br/>Hamdan Street, behind Dama's Gold" +
-                            "<br/>Abu Dhabi, UAE.</td></tr>";
-            
-            htmlcontent += "<tr><td style='height:40px;border-bottom:1px solid black' colspan=5 align='center'><h3>TAX INVOICE</h3></td></tr>";
-            htmlcontent += "<tr><th width='35%'>Item</th><th width='15%'>Price</th><th width='15%'>Quantity</th><th width='15%'>VAT</th><th width='20%'>Amount</th></tr>";
+            htmlcontent += "<tr><td colspan=5 align='center'>Hamdan Street, behind Dama's Gold" +
+                            "<br/>Abu Dhabi, UAE.<br/>"+
+                            "02 633 7336 / 050 780 1413</td></tr>";
+            htmlcontent += "<tr><td colspan=5 align='center'>TRN : 100383785100003</td></tr>";
+            htmlcontent += "<tr><td colspan=5 align='center'><h3>TAX INVOICE</h3></td></tr>";
+            htmlcontent += "<tr><td colspan=5 align='left' style='border-bottom:1px solid black'>Bill No. : {0}</td></tr>";
+            htmlcontent += "<tr><th width='35%'>Item</th><th width='15%'>Price</th><th width='15%'>Quantity</th><th width='15%'>VAT</th><th width='10%'>Amount</th></tr>";
             htmlcontent += "<tr><td style='height:20px;border-top:1px solid black' colspan=5></td></tr>";
 
             if(allItemsadded != null)
@@ -91,11 +93,15 @@ namespace RestaurantApp.Controllers
 
             htmlcontent += "<tr><td></td><td></td><td align='center'></td><td align='center'>" + totalvat.ToString("0.00") + "</td><td>"+totalamount.ToString("0.00")+"</td></tr>";
 
-            htmlcontent += "<tr><td align='center' colspan=5 style='font-size:20px;font-weight:500;'>Total : " + finalamount.ToString("0.00") +"</td></tr>";
+            htmlcontent += "<tr><td align='center' colspan=5 style='font-size:20px;'>Total : " + finalamount.ToString("0.00") +"</td></tr>";
             htmlcontent += "<tr><td style='height:5px;' colspan=5></td></tr>";
+
 
             if (thebills != null)
             {
+                thebills.vatAmount = totalvat;
+                thebills.billAmountWithoutVat = totalamount;
+                thebills.billAmountWithVat = finalamount;
                 if (thebills.addDeliveryInBill != "" && thebills.addDeliveryInBill != null)
                 {
                     htmlcontent += "<tr><td align='center'>Delivery to : </td><td colspan=4 align='left'>" + thebills.addDeliveryInBill + "</td></tr>";
@@ -110,18 +116,28 @@ namespace RestaurantApp.Controllers
 
                     htmlcontent += "<tr><td align='center'>SIGNATURE</td></tr>";
                 }
+
+                _context.allBills.Add(thebills);
+                _context.SaveChanges();
+
+                htmlcontent = string.Format(htmlcontent, thebills.BillId.ToString().PadLeft(4, '0'));
             }
 
             htmlcontent += "<tr><td style='height:30px;' colspan=5></td></tr>";
-            htmlcontent += "<tr><td colspan=5 align='center'>THANK YOU!! &nbsp;&nbsp;&nbsp; VISIT AGAIN!!!</td></tr>";
+            htmlcontent += "<tr><td colspan=5 align='center'><b>THANK YOU!! &nbsp;&nbsp;&nbsp; VISIT AGAIN!!!</b></td></tr>";
 
             htmlcontent += "</table>";
 
+            
+
             totalamount = 0;
+
+
 
             var config = new PdfGenerateConfig();
             config.PageOrientation = PageOrientation.Landscape;
-            config.ManualPageSize = new PdfSharpCore.Drawing.XSize(600, 297);
+            config.ManualPageSize = new PdfSharpCore.Drawing.XSize(590, 297);
+
 
             PdfGenerator.AddPdfPages(document, htmlcontent, config);
             byte[]? response = null;
@@ -130,6 +146,9 @@ namespace RestaurantApp.Controllers
                 document.Save(ms);
                 response = ms.ToArray();
             }
+
+            
+
             return File(response, "application/pdf");
         }
 
@@ -148,16 +167,7 @@ namespace RestaurantApp.Controllers
     }
 
 
-    public class allBills
-    {
-        public string? addSignatureInBill { get; set; }
-
-        public string? addDeliveryInBill { get; set; }
-
-        public string? addMobileNo { get; set; }
-
-        public string? itemsadded { get; set; }
-    }
+    
 
     public class Bill
     {

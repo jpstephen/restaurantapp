@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Shared\burgers.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Shared\burgers.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Privacy.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
@@ -14,9 +25,145 @@
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.cs-CZ.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.de-DE.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.en-CA.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.en-US.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.fr-FR.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.he-IL.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.hr-HR.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.hu-HU.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.it-IT.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.ja-JP.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.lt.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.ru-RU.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.culture.sa-IN.js" />
+    <None Include="wwwroot\jqwidgets\globalization\globalize.js" />
+    <None Include="wwwroot\jqwidgets\jqx-all.js" />
+    <None Include="wwwroot\jqwidgets\jqxangular.js" />
+    <None Include="wwwroot\jqwidgets\jqxbarcode.js" />
+    <None Include="wwwroot\jqwidgets\jqxbargauge.js" />
+    <None Include="wwwroot\jqwidgets\jqxbulletchart.js" />
+    <None Include="wwwroot\jqwidgets\jqxbuttongroup.js" />
+    <None Include="wwwroot\jqwidgets\jqxbuttons.js" />
+    <None Include="wwwroot\jqwidgets\jqxcalendar.js" />
+    <None Include="wwwroot\jqwidgets\jqxchart.annotations.js" />
+    <None Include="wwwroot\jqwidgets\jqxchart.api.js" />
+    <None Include="wwwroot\jqwidgets\jqxchart.core.js" />
+    <None Include="wwwroot\jqwidgets\jqxchart.js" />
+    <None Include="wwwroot\jqwidgets\jqxchart.rangeselector.js" />
+    <None Include="wwwroot\jqwidgets\jqxchart.waterfall.js" />
+    <None Include="wwwroot\jqwidgets\jqxcheckbox.js" />
+    <None Include="wwwroot\jqwidgets\jqxcheckboxgroup.js" />
+    <None Include="wwwroot\jqwidgets\jqxcolorpicker.js" />
+    <None Include="wwwroot\jqwidgets\jqxcombobox.js" />
+    <None Include="wwwroot\jqwidgets\jqxcomplexinput.js" />
+    <None Include="wwwroot\jqwidgets\jqxcore.elements.js" />
+    <None Include="wwwroot\jqwidgets\jqxcore.js" />
+    <None Include="wwwroot\jqwidgets\jqxdata.export.js" />
+    <None Include="wwwroot\jqwidgets\jqxdata.js" />
+    <None Include="wwwroot\jqwidgets\jqxdatatable.js" />
+    <None Include="wwwroot\jqwidgets\jqxdate.js" />
+    <None Include="wwwroot\jqwidgets\jqxdatetimeinput.js" />
+    <None Include="wwwroot\jqwidgets\jqxdocking.js" />
+    <None Include="wwwroot\jqwidgets\jqxdockinglayout.js" />
+    <None Include="wwwroot\jqwidgets\jqxdockpanel.js" />
+    <None Include="wwwroot\jqwidgets\jqxdragdrop.js" />
+    <None Include="wwwroot\jqwidgets\jqxdraw.js" />
+    <None Include="wwwroot\jqwidgets\jqxdropdownbutton.js" />
+    <None Include="wwwroot\jqwidgets\jqxdropdownlist.js" />
+    <None Include="wwwroot\jqwidgets\jqxeditor.js" />
+    <None Include="wwwroot\jqwidgets\jqxexpander.js" />
+    <None Include="wwwroot\jqwidgets\jqxexport.js" />
+    <None Include="wwwroot\jqwidgets\jqxfileupload.js" />
+    <None Include="wwwroot\jqwidgets\jqxform.js" />
+    <None Include="wwwroot\jqwidgets\jqxformattedinput.js" />
+    <None Include="wwwroot\jqwidgets\jqxgauge.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.aggregates.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.chart.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.columnsreorder.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.columnsresize.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.edit.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.export.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.filter.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.grouping.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.pager.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.selection.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.sort.js" />
+    <None Include="wwwroot\jqwidgets\jqxgrid.storage.js" />
+    <None Include="wwwroot\jqwidgets\jqxheatmap.js" />
+    <None Include="wwwroot\jqwidgets\jqximport.js" />
+    <None Include="wwwroot\jqwidgets\jqxinput.js" />
+    <None Include="wwwroot\jqwidgets\jqxkanban.js" />
+    <None Include="wwwroot\jqwidgets\jqxknob.js" />
+    <None Include="wwwroot\jqwidgets\jqxknockout.js" />
+    <None Include="wwwroot\jqwidgets\jqxlayout.js" />
+    <None Include="wwwroot\jqwidgets\jqxlistbox.js" />
+    <None Include="wwwroot\jqwidgets\jqxlistmenu.js" />
+    <None Include="wwwroot\jqwidgets\jqxloader.js" />
+    <None Include="wwwroot\jqwidgets\jqxmaskedinput.js" />
+    <None Include="wwwroot\jqwidgets\jqxmaterialcolorpicker.js" />
+    <None Include="wwwroot\jqwidgets\jqxmenu.js" />
+    <None Include="wwwroot\jqwidgets\jqxnavbar.js" />
+    <None Include="wwwroot\jqwidgets\jqxnavigationbar.js" />
+    <None Include="wwwroot\jqwidgets\jqxnotification.js" />
+    <None Include="wwwroot\jqwidgets\jqxnumberinput.js" />
+    <None Include="wwwroot\jqwidgets\jqxpanel.js" />
+    <None Include="wwwroot\jqwidgets\jqxpasswordinput.js" />
+    <None Include="wwwroot\jqwidgets\jqxpivot.js" />
+    <None Include="wwwroot\jqwidgets\jqxpivotdesigner.js" />
+    <None Include="wwwroot\jqwidgets\jqxpivotgrid.js" />
+    <None Include="wwwroot\jqwidgets\jqxpopover.js" />
+    <None Include="wwwroot\jqwidgets\jqxprogressbar.js" />
+    <None Include="wwwroot\jqwidgets\jqxqrcode.js" />
+    <None Include="wwwroot\jqwidgets\jqxradiobutton.js" />
+    <None Include="wwwroot\jqwidgets\jqxradiobuttongroup.js" />
+    <None Include="wwwroot\jqwidgets\jqxrangeselector.js" />
+    <None Include="wwwroot\jqwidgets\jqxrating.js" />
+    <None Include="wwwroot\jqwidgets\jqxresponse.js" />
+    <None Include="wwwroot\jqwidgets\jqxresponsivepanel.js" />
+    <None Include="wwwroot\jqwidgets\jqxribbon.js" />
+    <None Include="wwwroot\jqwidgets\jqxscheduler.api.js" />
+    <None Include="wwwroot\jqwidgets\jqxscheduler.js" />
+    <None Include="wwwroot\jqwidgets\jqxscrollbar.js" />
+    <None Include="wwwroot\jqwidgets\jqxscrollview.js" />
+    <None Include="wwwroot\jqwidgets\jqxslider.js" />
+    <None Include="wwwroot\jqwidgets\jqxsortable.js" />
+    <None Include="wwwroot\jqwidgets\jqxsplitlayout.js" />
+    <None Include="wwwroot\jqwidgets\jqxsplitter.js" />
+    <None Include="wwwroot\jqwidgets\jqxswitchbutton.js" />
+    <None Include="wwwroot\jqwidgets\jqxtabs.js" />
+    <None Include="wwwroot\jqwidgets\jqxtagcloud.js" />
+    <None Include="wwwroot\jqwidgets\jqxtextarea.js" />
+    <None Include="wwwroot\jqwidgets\jqxtimepicker.js" />
+    <None Include="wwwroot\jqwidgets\jqxtoolbar.js" />
+    <None Include="wwwroot\jqwidgets\jqxtooltip.js" />
+    <None Include="wwwroot\jqwidgets\jqxtouch.js" />
+    <None Include="wwwroot\jqwidgets\jqxtree.js" />
+    <None Include="wwwroot\jqwidgets\jqxtreegrid.js" />
+    <None Include="wwwroot\jqwidgets\jqxtreemap.js" />
+    <None Include="wwwroot\jqwidgets\jqxvalidator.js" />
+    <None Include="wwwroot\jqwidgets\jqxwindow.js" />
+    <None Include="wwwroot\jqwidgets\styles\font\jqx-icons.svg" />
+    <None Include="wwwroot\jqwidgets\styles\font\jqx-icons.woff2" />
+    <None Include="wwwroot\jqwidgets\styles\images\colorpicker\Thumbs.db" />
+    <None Include="wwwroot\jqwidgets\styles\images\darkness\Thumbs.db" />
+    <None Include="wwwroot\jqwidgets\styles\images\le-frog\Thumbs.db" />
+    <None Include="wwwroot\jqwidgets\styles\images\lightness\Thumbs.db" />
+    <None Include="wwwroot\jqwidgets\styles\images\overcast\Thumbs.db" />
+    <None Include="wwwroot\jqwidgets\styles\images\redmond\Thumbs.db" />
+    <None Include="wwwroot\jqwidgets\styles\images\smoothness\Thumbs.db" />
+    <None Include="wwwroot\jqwidgets\styles\images\start\Thumbs.db" />
+    <None Include="wwwroot\jqwidgets\styles\images\sunny\Thumbs.db" />
+    <None Include="wwwroot\jqwidgets\styles\images\Thumbs.db" />
+    <None Include="wwwroot\jqwidgets\styles\jqx.fluent.css.map" />
+    <None Include="wwwroot\jqwidgets\styles\jqx.fluent.scss" />
+    <None Include="wwwroot\jqwidgets\styles\Thumbs.db" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="jQWidgets.AspNetCore.Mvc.TagHelpers" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />

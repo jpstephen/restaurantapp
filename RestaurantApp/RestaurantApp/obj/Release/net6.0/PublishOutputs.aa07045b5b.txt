@@ -286,6 +286,8 @@ C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Resta
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\RestaurantApp.pdb
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Azure.Core.dll
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Azure.Identity.dll
+C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\jQWidgets.AspNetCore.Mvc.TagHelpers.dll
+C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.JsonPatch.dll
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Razor.Language.dll
@@ -319,6 +321,7 @@ C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Micro
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
+C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\PdfSharpCore.dll
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\HtmlRenderer.Core.dll
 C:\RestaurantApp\RestaurantApp\RestaurantApp\obj\Release\net6.0\PubTmp\Out\HtmlRenderer.PdfSharp.Core.dll

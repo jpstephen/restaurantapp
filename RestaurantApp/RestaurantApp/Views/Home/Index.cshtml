@@ -4,12 +4,12 @@
     ViewData["Title"] = "Home Page";
 }
 
-@{
+@*@{
     var itemcount = 0;
-}
+}*@
 
 
-<div class="row">
+@*<div class="row">
     <div class="col-md-8">
         <div class="row">
     @foreach (var item in Model)
@@ -17,16 +17,11 @@
             if(itemcount < 3)
             {
 
-            @*if(itemcount == 0)
-                {
-                    <div class="row">
-                }*@
-
                 var no_of_items = @item.Name.Replace(' ','_') + "_value";
 
                 <div class="col-md-3">@item.Name &nbsp;&nbsp;&nbsp;&nbsp; @item.Price aed<br /><br />
-                    <input type="number" id=@no_of_items value="1" style="width:40px;height:40px;" /> 
-                    <a class="btn btn-lg btn-primary" onclick="addToBill('@item.Name.Replace(' ','_')',@item.Price)">
+                    <input type="number" id=@no_of_items value="1" style="width:30px;height:30px;" /> 
+                    <a class="btn btn-lg  p-1 bg-danger text-white btn-outline-light" onclick="addToBill('@item.Name.Replace(' ','_')',@item.Price)">
                         <i class="bi bi-file-plus-fill"></i>Add</a>
                     <br />
                     <br />
@@ -44,7 +39,59 @@
         </div>
     </div>
     <div class="col-md-4" id="billsection"></div>
+</div>*@
+
+<div class="col-md-12" style="padding-bottom:50px;"><input type="text" class="form-control" id="searchInput" autofocus="autofocus" onkeyup="searchItems()" placeholder="Search for items.."></div>
+
+<div>
+    <div class="col-md-8">
+        <table id="itemsTable" width="70%" style="float:left">
+            <tr><th>Item name</th><th>Price</th><th>Quantity</th><th>Action</th></tr>
+            @foreach (var item in Model)
+            {
+                var no_of_items = @item.Name.Replace(' ','_') + "_value";
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td><input type="number" id=@no_of_items value="1" style="width:30px;height:30px;" /></td>
+                    <td><a class="btn btn-lg  p-1 bg-danger text-white btn-outline-light" onclick="addToBill('@item.Name.Replace(' ','_')',@item.Price)">
+                        <i class="bi bi-file-plus-fill"></i>Add</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-md-4" id="billsection" style="display:inline-block"></div>
 </div>
+
+
+<script>
+    $(document).ready(function(){
+    $("#searchInput").focus();
+});
+    </script>
+
+<script>
+    function searchItems() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("itemsTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
 
 
 <script>
@@ -97,7 +144,7 @@ function createtable() {
 
     var billtotal = 0;
 
-    var tablehtml = "<table class='table-condensed' width='100%'><tr><th colspan=5 align='center'>BILL</th></tr>";
+    var tablehtml = "<table class='table-condensed' width='100%'><tr><th colspan=5>BILL</th></tr>";
     tablehtml += "<tr><th>Item</th><th>Price</th><th>Quantity</th><th>Total</th><th></th></tr>"
 
     itemsinbill.itemsadded.forEach(function(item) {
@@ -126,18 +173,18 @@ function createtable() {
 function additionaldetails(e) {
     if (e.id == "phoneno") {
         if (e.checked) {
-            $("#phonenovalue").show();
+            jq("#phonenovalue").show();
         }
         else {
-            $("#phonenovalue").hide();
+            jq("#phonenovalue").hide();
         }
     }
     else if (e.id == "delivery") {
         if (e.checked) {
-            $("#deliveryvalue").show();
+            jq("#deliveryvalue").show();
         }
         else {
-            $("#deliveryvalue").hide();
+            jq("#deliveryvalue").hide();
         }
     }
 }
@@ -184,5 +231,7 @@ function generatebill() {
 
     itemsinbill = {"addSignatureInBill":"", "addDeliveryInBill":"","addMobileNo":"", "itemsadded":[]};
     iteminbillid = 0;
+
+    document.getElementByID("searchInput").focus();
 }
 </script>
