@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="~/RestaurantApp.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/jqwidgets/styles/jqx.base.css" type="text/css" />
     
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        var jq = $.noConflict(true);
+    </script>
+    
     <style>
         .container {
             background-color: lightgoldenrodyellow;
@@ -43,6 +50,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Bills" asp-action="Index" style="color:white;"> Bills</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Vendors" asp-action="Index" style="color:white;"> Vendors</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -59,12 +69,6 @@
             &copy; 2023 - Restaurant App 
         </div>*@
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script>
-        var jq = $.noConflict(true);
-    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

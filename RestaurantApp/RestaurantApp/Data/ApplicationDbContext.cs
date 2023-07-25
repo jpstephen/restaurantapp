@@ -13,5 +13,9 @@ namespace RestaurantApp.Data
         public DbSet<Items> MItems { get; set; }
 
         public DbSet<Bills> allBills { get; set; }
+
+        public DbSet<Vendors> MVendors { get; set; }
+
+        public DbSet<VendorBills> MVendorBills { get; set; }
     }
 }

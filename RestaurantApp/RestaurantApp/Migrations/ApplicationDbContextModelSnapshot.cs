@@ -84,6 +84,48 @@ namespace RestaurantApp.Migrations
 
                     b.ToTable("MItems");
                 });
+
+            modelBuilder.Entity("RestaurantApp.Models.VendorBills", b =>
+                {
+                    b.Property<int>("VendorBillId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VendorBillId"));
+
+                    b.Property<float>("AmountPaid")
+                        .HasColumnType("real");
+
+                    b.Property<DateTime>("VendorBillDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("VendorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("VendorBillId");
+
+                    b.ToTable("MVendorBills");
+                });
+
+            modelBuilder.Entity("RestaurantApp.Models.Vendors", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MVendors");
+                });
 #pragma warning restore 612, 618
         }
     }

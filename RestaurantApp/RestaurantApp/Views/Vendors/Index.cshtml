@@ -1,0 +1,118 @@
+﻿
+@model dynamic
+        <script type="text/javascript" src="~/scripts/jquery-1.11.1.min.js"></script>
+    <script>
+$.noConflict(true);
+    </script>
+    <script type="text/javascript" src="~/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="~/jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="~/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="~/jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="~/jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="~/jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="~/jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="~/jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="~/jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="~/jqwidgets/jqxgrid.sort.js"></script> 
+    <script type="text/javascript" src="~/jqwidgets/jqxgrid.pager.js"></script> 
+    <script type="text/javascript" src="~/jqwidgets/jqxgrid.selection.js"></script> 
+    <script type="text/javascript" src="~/jqwidgets/jqxgrid.edit.js"></script> 
+    <script type="text/javascript" src="~/jqwidgets/jqxgrid.filter.js"></script>
+
+
+    @{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        @if (TempData["ResultOk"] != null)
+{
+    <h3 class="alert-success">@TempData["ResultOk"]</h3>
+}
+
+    <h2 class="text-center mb-3"> All Vendors </h2>
+
+    <div class="col mb-3">
+        <a asp-controller="Vendors" asp-action="Create" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>Add</a>
+    
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.Vendors)
+            {
+                <tr>
+                    <td width="20%">
+                        <button class="btn btn-link btn-sm" onclick='addVendor(@item.Id)'>@item.Name</button>
+                        
+                    </td>
+                    <td>
+                        <div role="group" class="w-60 btn-group">
+                            <a asp-controller="Vendors" asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                            <a asp-controller="Vendors" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+    <div class="col-md-7" id="addVendor" style="display:none;">
+       @* <partial name="_AddVendorRecord"></partial>*@
+       <div>
+           @{
+            await Html.RenderPartialAsync("_AddVendorRecord");
+        }
+       </div>
+
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function() {
+        const vendorbilldate = document.getElementById("VendorBillDateInput");
+        var date = Date.now;
+        var time = Date.time.now();
+        vendorbilldate.defaultValue = date + 'T' + time;
+
+        //var source =  
+        //    {  
+        //        datatype: "json",  
+        //        datafields: [  
+        //       { name: 'VendorBillId', type: 'number' },  
+        //       { name: 'AmountPaid', type: 'number' }
+        //        ],  
+        //        url: 'Vendors/GetVendorBills'  
+        //    };  
+  
+        //var dataAdapter = new $.jqx.dataAdapter(source);  
+        //$("#gridVendorBills").jqxGrid(  
+        //    {  
+        //        width: 400,  
+        //        source: dataAdapter,  
+        //        pageable: true,  
+        //        sortable: true,  
+        //        columns: [  
+        //            { text: "Bill ID", datafield: "VendorBillId" },  
+        //            { text: "Amount paid", datafield: "AmountPaid" } 
+        //        ]  
+        //    });  
+});
+
+function addVendor(vendorid,vendorname) {
+    var vendornameelement = document.getElementById("VendorName");
+    var vendoridelement = document.getElementById("VendorIdInput");
+    vendoridelement.value = vendorid;
+    vendornameelement.innerHTML = "<b>" + vendorname + "</b>";
+    document.getElementById("addVendor").style.display = "block";
+    
+}
+</script>

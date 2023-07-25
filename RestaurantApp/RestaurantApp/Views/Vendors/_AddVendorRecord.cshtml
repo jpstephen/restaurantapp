@@ -1,0 +1,58 @@
+﻿
+
+<form id="addingvendorbill">
+    <div class="row">
+        <div class="col-xs-12" style="align-content:center;" id="VendorName"></div>
+        <input type="hidden" class="form-control mb-3" id="VendorIdInput" name="VendorId">
+    </div>
+    <div class="row">
+        <input type="datetime-local" id="VendorBillDateInput" name="VendorBillDate" />
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+                <label>Amount paid</label>
+                <input type="text" class="form-control mb-3" id="AmountPaidInput" name="AmountPaid">
+            </div>
+    </div>
+            
+</form>
+
+<div class="col-xs-4">
+    <button type="submit" class="btn btn-lg btn-primary p-2" onclick="addvendorbill()"><i class="bi bi-file-plus-fill"></i>Add</button>
+</div>
+
+<jqx-grid theme='@ViewData["Theme"]' id="vendorbillsgrid" sortable="true" filterable="true" auto-height="true" width="200" sourceUrl='@Url.Action("GetVendorBills","Vendors", new { vendorid = 1 })' source="Model.VendorBills" pageable="true">   
+   <jqx-grid-columns>  
+     <jqx-grid-column datafield="VendorBillId" width="100" text="Bill No"></jqx-grid-column>
+     <jqx-grid-column datafield="AmountPaid" width="100" text="Amount Paid"></jqx-grid-column> 
+  </jqx-grid-columns>  
+ </jqx-grid> 
+
+@* <div id="gridVendorsBill"></div>*@
+
+
+<script>
+    function addvendorbill() {
+        //var data = $("#addingvendorbill").serialize();
+        let data = {
+        VendorId: $("#VendorIdInput").val(),
+        AmountPaid: $("#AmountPaidInput").val(),
+        VendorBillDate: $("#VendorBillDateInput").val()
+    }
+        console.log(data);
+        jq.ajax({
+            type: 'POST',
+            url: '/Vendors/AddVendorRecord',
+            data: data,
+            success: function (result) {
+                alert(result.data);
+                $("#vendorbillsgrid").jqxGrid('updatebounddata');
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        })
+    }
+
+</script>
